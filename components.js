@@ -228,6 +228,7 @@ class Intersection {
             push();
             noFill();
             stroke(palette.circumcircleColor);
+            strokeWeight(2);
             let r = this.getCircumcirleRadius();
             ellipse(intersection.x, intersection.y, r, r)
             pop();

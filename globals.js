@@ -13,7 +13,7 @@ let trueMouseY;
 
 let controls = {
     showCircumcircle: false,
-    showBisectors: true,
+    showBisectors: false,
     showSegments: false,
     showMidpoints: false,
     showIntersection: false,
@@ -22,13 +22,13 @@ let controls = {
 };
 
 palette = { 
-    backgroundColor: "#1e1e55",
-    circumcircleColor: "#ffffff", 
-    bisectorColor: "#ff9271", 
-    segmentColor: "#20c5c5", 
-    midpointColor: "#1beb95", 
-    intersectionColor: "#fffe66", 
-    siteColor: "#ffffff", 
+    backgroundColor: "#0e0e16",
+    circumcircleColor: "#b31a1a",
+    bisectorColor: "#7181ff",
+    segmentColor: "#20c5c5",
+    midpointColor: "#00ff91",
+    intersectionColor: "#ffffff", 
+    siteColor: "#ff970c", 
     labelColor: "#1fced9" 
 }
 

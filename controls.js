@@ -10,15 +10,15 @@ function controls_init() {
     gui.add(controls, "showSites").name("Sites");
     gui.add(controls, "showLabels").name("Labels");
 
-    gui.addColor(palette, "backgroundColor").name("Background");
+    // gui.addColor(palette, "backgroundColor").name("Background");
 
-    gui.addColor(palette, "circumcircleColor").name("Circumcircle");
-    gui.addColor(palette, "bisectorColor").name("Bisector");
-    gui.addColor(palette, "intersectionColor").name("Intersection");
-    gui.addColor(palette, "segmentColor").name("Segments");
-    gui.addColor(palette, "midpointColor").name("Midpoint");
-    gui.addColor(palette, "siteColor").name("Site");
-    gui.addColor(palette, "labelColor").name("Label");
+    // gui.addColor(palette, "circumcircleColor").name("Circumcircle");
+    // gui.addColor(palette, "bisectorColor").name("Bisector");
+    // gui.addColor(palette, "intersectionColor").name("Intersection");
+    // gui.addColor(palette, "segmentColor").name("Segments");
+    // gui.addColor(palette, "midpointColor").name("Midpoint");
+    // gui.addColor(palette, "siteColor").name("Site");
+    // gui.addColor(palette, "labelColor").name("Label");
     
 }
 
