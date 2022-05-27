@@ -24,9 +24,12 @@ function setup() {
   for (let i = 0; i < n; i++) {
     let newPoint = new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2));
     inputPoints.push(newPoint);
-    if (ABC.pointIsInCircumcircle(newPoint)) {
-      console.log(true);
-    }
+    validTriangles.forEach(t => {
+      if (t.pointIsInCircumcircle(newPoint)) {
+        console.log(true);
+      }
+    })
+
   }
 }
   
