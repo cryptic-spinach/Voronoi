@@ -15,10 +15,10 @@ let controls = {
     showCircumcircle: false,
     showBisectors: false,
     showSegments: true,
-    showMidpoints: true,
-    showIntersection: false,
+    showMidpoints: false,
+    showIntersection: true,
     showSites: true,
-    showLabels: true
+    showLabels: false
 };
 
 palette = { 
@@ -33,5 +33,5 @@ palette = {
 }
 
 let hiddenControls = {
-    showArrowTip: true
+    showArrowTip: false
 };

@@ -1,5 +1,5 @@
 class PointObj {
-    constructor (x, y, label) {
+    constructor (x, y, label = "") {
         this.x = x;
         this.y = y;
         this.r = 15;

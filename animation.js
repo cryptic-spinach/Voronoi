@@ -4,9 +4,15 @@ function setup() {
 
   controls_init();
 
-  input_A = new PointObj(150, 150, 'A');
-  input_B = new PointObj(-150, -150, 'B');
-  input_C = new PointObj(500, -100, 'C');
+
+  let vec = createVector(0, 300);
+
+  vec.rotate(0);
+  input_A = new PointObj(vec.x, vec.y, 'A');
+  vec.rotate(2 * PI / 3);
+  input_B = new PointObj(vec.x, vec.y, 'B');
+  vec.rotate(2 * PI / 3);
+  input_C = new PointObj(vec.x, vec.y, 'C');
 }
   
 function draw() {
