@@ -24,8 +24,7 @@ function setup() {
   for (let i = 0; i < n; i++) {
     let newPoint = new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2));
     inputPoints.push(newPoint);
-    if (dist(newPoint.x, newPoint.y, ABC.circumcenter.x, ABC.circumcenter.y) < ABC.circumcircleRadius) {
-      // point is inside circumcircle
+    if (ABC.pointIsInCircumcircle(newPoint)) {
       console.log(true);
     }
   }

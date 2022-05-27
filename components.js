@@ -242,8 +242,8 @@ class TriangleObj {
         return Math.sqrt(Math.pow(this.circumcenter.x - x, 2) + Math.pow(this.circumcenter.y - y, 2));
     }
 
-    getDistance(point_1, point_2) {
-        return 2 * Math.sqrt(Math.pow(point_1.x - point_2.x, 2) + Math.pow(point_1.y - point_2.y, 2));
+    pointIsInCircumcircle(testPoint) {
+        return dist(testPoint.x, testPoint.y, this.circumcenter.x, this.circumcenter.y) < this.circumcircleRadius
     }
     
 }
