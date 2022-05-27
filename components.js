@@ -127,6 +127,7 @@ class TriangleObj {
         this.pair_2 = pair_2;
         this.pair_3 = new SegmentObj(pair_1.site_1, pair_2.site_2);
         this.intersection = this.getIntersection();
+        this.circumcircleRadius = this.getCircumcirleRadius()
     }
 
     getIntersection() {
