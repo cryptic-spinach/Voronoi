@@ -1,5 +1,14 @@
-# Circumcircle Explorer
+# Data Structures
 
-Welcome to my Circumcircle Explorer! This project is part of a larger effort to create an interactive Voronoi diagram. There are 3 points in space which you can drag to different locations in the browser and observe the resultant change in the circumcircle.
+## PointObj
 
-https://user-images.githubusercontent.com/68619217/166168764-9f2e7a4b-77c3-42e8-bee0-8bf200156d7a.mov
+The `PointObj` class stores the location of a point on the canvas.
+
+- `x` - the x coordinate of the point relative to the origin.
+- `y` - the x coordinate of the point relative to the origin.
+- `label` - an optional parameter that allows you track an instance of a point in the browser. Use the `showLabel()` method to display your label.
+
+## SegmentObj
+
+
+
