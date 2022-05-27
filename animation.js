@@ -1,18 +1,25 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  edgeLength = 100000;
 
   controls_init();
 
-
-  let vec = createVector(0, 300);
-
-  vec.rotate(0);
+  let vec = createVector(0, 2200);
+  
+  vec.rotate(2 * PI / 3);
   input_A = new PointObj(vec.x, vec.y, 'A');
+  inputPoints.push(input_A);
+
   vec.rotate(2 * PI / 3);
   input_B = new PointObj(vec.x, vec.y, 'B');
+  inputPoints.push(input_B);
+
   vec.rotate(2 * PI / 3);
   input_C = new PointObj(vec.x, vec.y, 'C');
+  inputPoints.push(input_C);
+
+  for (let i = 0; i < n; i++) {
+    inputPoints.push(new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2)))
+  }
 }
   
 function draw() {
@@ -55,9 +62,7 @@ function draw() {
   if (controls.showIntersection) ABC.drawIntersection(); // This method can be called on ony permutation of ABC
 
   if (controls.showSites) {
-    input_A.show();
-    input_B.show();
-    input_C.show();
+    inputPoints.forEach(p => p.show())
   }
 
   if(controls.showLabels) {

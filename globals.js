@@ -1,4 +1,4 @@
-let edgeLength;
+let edgeLength = 100000;
 let input_A;
 let input_B;
 let input_C;
@@ -16,7 +16,7 @@ let controls = {
     showBisectors: false,
     showSegments: true,
     showMidpoints: false,
-    showIntersection: true,
+    showIntersection: false,
     showSites: true,
     showLabels: false
 };
@@ -35,3 +35,8 @@ palette = {
 let hiddenControls = {
     showArrowTip: false
 };
+
+let n = 1; // number of inputs
+let samplePoints = [];
+let inputPoints = [];
+let validTriangles = [];
