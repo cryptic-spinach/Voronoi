@@ -12,7 +12,7 @@ let trueMouseX;
 let trueMouseY;
 
 let controls = {
-    showCircumcircle: false,
+    showCircumcircle: true,
     showBisectors: false,
     showSegments: true,
     showMidpoints: false,

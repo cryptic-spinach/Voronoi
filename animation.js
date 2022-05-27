@@ -2,7 +2,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   controls_init();
 
-  let vec = createVector(0, 2200);
+  let vec = createVector(0, 300);
   
   vec.rotate(2 * PI / 3);
   input_A = new PointObj(vec.x, vec.y, 'A');
@@ -22,7 +22,12 @@ function setup() {
   validTriangles.push(ABC)
 
   for (let i = 0; i < n; i++) {
-    inputPoints.push(new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2)))
+    let newPoint = new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2));
+    inputPoints.push(newPoint);
+    if (dist(newPoint.x, newPoint.y, ABC.circumcenter.x, ABC.circumcenter.y) < ABC.circumcircleRadius) {
+      // point is inside circumcircle
+      console.log(true);
+    }
   }
 }
   
@@ -43,7 +48,7 @@ function draw() {
   // CAB = new TriangleObj(CA, AB);
 
 
-  // if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
+  if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
 
   // if (controls.showBisectors){
   //   ABC.drawBisectorFromIntersection();

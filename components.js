@@ -126,7 +126,7 @@ class TriangleObj {
         this.pair_1 = pair_1;
         this.pair_2 = pair_2;
         this.pair_3 = new SegmentObj(pair_1.site_1, pair_2.site_2);
-        this.intersection = this.getIntersection();
+        this.circumcenter = this.getIntersection();
         this.circumcircleRadius = this.getCircumcirleRadius()
     }
 
@@ -230,7 +230,7 @@ class TriangleObj {
             noFill();
             stroke(palette.circumcircleColor);
             let r = this.getCircumcirleRadius();
-            ellipse(intersection.x, intersection.y, r, r)
+            ellipse(intersection.x, intersection.y, 2*r, 2*r)
             pop();
         }
     }
@@ -239,7 +239,7 @@ class TriangleObj {
     getCircumcirleRadius() {
         let x = this.pair_1.site_1.x;
         let y = this.pair_1.site_1.y;
-        return 2 * Math.sqrt(Math.pow(this.intersection.x - x, 2) + Math.pow(this.intersection.y - y, 2));
+        return Math.sqrt(Math.pow(this.circumcenter.x - x, 2) + Math.pow(this.circumcenter.y - y, 2));
     }
 
     getDistance(point_1, point_2) {
