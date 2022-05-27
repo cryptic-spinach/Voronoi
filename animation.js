@@ -4,9 +4,9 @@ function setup() {
 
   controls_init();
 
-  site_A = new Site(150, 150, 'A');
-  site_B = new Site(-150, -150, 'B');
-  site_C = new Site(500, -100, 'C');
+  input_A = new PointObj(150, 150, 'A');
+  input_B = new PointObj(-150, -150, 'B');
+  input_C = new PointObj(500, -100, 'C');
 }
   
 function draw() {
@@ -17,13 +17,13 @@ function draw() {
   trueMouseX = (mouseX - windowWidth/2);
   trueMouseY = -(mouseY - windowHeight/2);
 
-  AB = new SitePair(site_A, site_B);
-  BC = new SitePair(site_B, site_C);
-  CA = new SitePair(site_C, site_A);
+  AB = new SegmentObj(input_A, input_B);
+  BC = new SegmentObj(input_B, input_C);
+  CA = new SegmentObj(input_C, input_A);
 
-  ABC = new Intersection(AB, BC);
-  BCA = new Intersection(BC, CA);
-  CAB = new Intersection(CA, AB);
+  ABC = new TriangleObj(AB, BC);
+  BCA = new TriangleObj(BC, CA);
+  CAB = new TriangleObj(CA, AB);
 
 
   if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
@@ -49,15 +49,15 @@ function draw() {
   if (controls.showIntersection) ABC.drawIntersection(); // This method can be called on ony permutation of ABC
 
   if (controls.showSites) {
-    site_A.show();
-    site_B.show();
-    site_C.show();
+    input_A.show();
+    input_B.show();
+    input_C.show();
   }
 
   if(controls.showLabels) {
-    site_A.showLabel();
-    site_B.showLabel();
-    site_C.showLabel();
+    input_A.showLabel();
+    input_B.showLabel();
+    input_C.showLabel();
   }
   
 }

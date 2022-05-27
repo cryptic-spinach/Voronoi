@@ -1,4 +1,4 @@
-class Site {
+class PointObj {
     constructor (x, y, label) {
         this.x = x;
         this.y = y;
@@ -31,7 +31,7 @@ class Site {
     }
 }
 
-class SitePair {
+class SegmentObj {
     constructor (site_1, site_2) {
         this.site_1 = site_1;
         this.site_2 = site_2;
@@ -121,11 +121,11 @@ class SitePair {
 
 }
 
-class Intersection {
+class TriangleObj {
     constructor (pair_1, pair_2) {
         this.pair_1 = pair_1;
         this.pair_2 = pair_2;
-        this.pair_3 = new SitePair(pair_1.site_1, pair_2.site_2);
+        this.pair_3 = new SegmentObj(pair_1.site_1, pair_2.site_2);
         this.intersection = this.getIntersection();
     }
 
@@ -228,7 +228,6 @@ class Intersection {
             push();
             noFill();
             stroke(palette.circumcircleColor);
-            strokeWeight(2);
             let r = this.getCircumcirleRadius();
             ellipse(intersection.x, intersection.y, r, r)
             pop();

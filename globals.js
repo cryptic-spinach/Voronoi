@@ -1,7 +1,7 @@
 let edgeLength;
-let site_A;
-let site_B;
-let site_C;
+let input_A;
+let input_B;
+let input_C;
 let AB;
 let BC;
 let AC;
@@ -14,8 +14,8 @@ let trueMouseY;
 let controls = {
     showCircumcircle: false,
     showBisectors: false,
-    showSegments: false,
-    showMidpoints: false,
+    showSegments: true,
+    showMidpoints: true,
     showIntersection: false,
     showSites: true,
     showLabels: true
@@ -23,7 +23,7 @@ let controls = {
 
 palette = { 
     backgroundColor: "#0e0e16",
-    circumcircleColor: "#b31a1a",
+    circumcircleColor: "#ffffff",
     bisectorColor: "#7181ff",
     segmentColor: "#20c5c5",
     midpointColor: "#00ff91",
@@ -33,5 +33,5 @@ palette = {
 }
 
 let hiddenControls = {
-    showArrowTip: false
+    showArrowTip: true
 };
