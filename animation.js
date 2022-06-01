@@ -14,14 +14,7 @@ function draw() {
   trueMouseX = (mouseX - windowWidth/2);
   trueMouseY = -(mouseY - windowHeight/2);
 
-  // AB = new SegmentObj(input_A, input_B);
-  // BC = new SegmentObj(input_B, input_C);
-  // CA = new SegmentObj(input_C, input_A);
-
-  // ABC = new TriangleObj(AB, BC);
-  // BCA = new TriangleObj(BC, CA);
-  // CAB = new TriangleObj(CA, AB);
-
+  update_super_triangle();
 
   if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
 
@@ -31,11 +24,11 @@ function draw() {
   //   CAB.drawBisectorFromIntersection();
   // }
 
-  // if (controls.showSegments) {
-  //   AB.drawSlopeVec();
-  //   BC.drawSlopeVec();
-  //   CA.drawSlopeVec();  
-  // }
+  if (controls.showSegments) {
+    AB.drawSlopeVec();
+    BC.drawSlopeVec();
+    CA.drawSlopeVec();  
+  }
 
   // if (controls.showMidpoints) {
   //   AB.drawMidpoint();
@@ -78,6 +71,17 @@ function valid_triangles_init() {
   BC = new SegmentObj(input_B, input_C);
   ABC = new TriangleObj(AB, BC);
   validTriangles.push(ABC);
+}
+
+// Used to update anything that is instantiated with inputs A, B, or C
+function update_super_triangle() {
+  AB = new SegmentObj(input_A, input_B);
+  BC = new SegmentObj(input_B, input_C);
+  CA = new SegmentObj(input_C, input_A);
+
+  ABC = new TriangleObj(AB, BC);
+  BCA = new TriangleObj(BC, CA);
+  CAB = new TriangleObj(CA, AB);
 }
 
 function construct_delaunay() {
