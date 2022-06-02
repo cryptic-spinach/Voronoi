@@ -18,7 +18,7 @@ let controls = {
     showMidpoints: false,
     showIntersection: false,
     showSites: true,
-    showLabels: false
+    showLabels: true
 };
 
 palette = { 
@@ -36,7 +36,8 @@ let hiddenControls = {
     showArrowTip: false
 };
 
-let n = 1; // number of inputs
+let n = 10; // number of inputs
 let samplePoints = [];
 let inputPoints = [];
 let validTriangles = [];
+

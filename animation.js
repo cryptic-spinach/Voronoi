@@ -1,8 +1,8 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   controls_init();
-  input_points_init();
-  valid_triangles_init();
+  // input_points_init();
+  // valid_triangles_init();
   construct_delaunay();
 }
   
@@ -14,9 +14,9 @@ function draw() {
   trueMouseX = (mouseX - windowWidth/2);
   trueMouseY = -(mouseY - windowHeight/2);
 
-  update_super_triangle();
+  // update_super_triangle();
 
-  if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
+  // if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
 
   // if (controls.showBisectors){
   //   ABC.drawBisectorFromIntersection();
@@ -24,11 +24,11 @@ function draw() {
   //   CAB.drawBisectorFromIntersection();
   // }
 
-  if (controls.showSegments) {
-    AB.drawSlopeVec();
-    BC.drawSlopeVec();
-    CA.drawSlopeVec();  
-  }
+  // if (controls.showSegments) {
+  //   AB.drawSlopeVec();
+  //   BC.drawSlopeVec();
+  //   CA.drawSlopeVec();  
+  // }
 
   // if (controls.showMidpoints) {
   //   AB.drawMidpoint();
@@ -43,9 +43,7 @@ function draw() {
   }
 
   if(controls.showLabels) {
-    input_A.showLabel();
-    input_B.showLabel();
-    input_C.showLabel();
+    inputPoints.forEach(p => p.showLabel())
   }
   
 }
@@ -86,12 +84,25 @@ function update_super_triangle() {
 
 function construct_delaunay() {
   for (let i = 0; i < n; i++) {
-    let newPoint = new PointObj(random(-windowWidth/2, windowWidth/2), random(-windowHeight/2, windowHeight/2));
+    let invalidTriangles = [];
+    let newPoint = new PointObj(random(-windowWidth/2 + 100, windowWidth/2 - 100), random(-windowHeight/2 + 100, windowHeight/2 - 100), i.toString());
     inputPoints.push(newPoint);
     validTriangles.forEach(t => {
       if (t.pointIsInCircumcircle(newPoint)) {
-        console.log(true);
+        invalidTriangles.push(t)
       }
-    })
+    });
+    let pointCloud = get_point_cloud(invalidTriangles);
   }
+  
+}
+
+function get_point_cloud(triangles) {
+  let ret = [];
+  triangles.forEach(t => {
+    ret.push(t.pair_1.site_1)
+    ret.push(t.pair_1.site_2)
+    ret.push(t.pair_2.site_2)
+  });
+  console.log(ret);
 }

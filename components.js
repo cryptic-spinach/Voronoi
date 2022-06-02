@@ -32,7 +32,7 @@ class PointObj {
 }
 
 class SegmentObj {
-    constructor (site_1, site_2) {
+    constructor (site_1, site_2, label = "") {
         this.site_1 = site_1;
         this.site_2 = site_2;
         this.coeffiecients = this.getStandardFormOfBisector();
