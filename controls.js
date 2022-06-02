@@ -1,14 +1,14 @@
 function controls_init() {
-    // gui = new dat.GUI();
-    // gui.width = 300;
+    gui = new dat.GUI();
+    gui.width = 300;
 
-    // gui.add(controls, "showCircumcircle").name("Circumcircle");
-    // gui.add(controls, "showBisectors").name("Bisectors");
-    // gui.add(controls, "showSegments").name("Segments");
-    // gui.add(controls, "showMidpoints").name("Midpoints");
-    // gui.add(controls, "showIntersection").name("Circumcenter");
-    // gui.add(controls, "showSites").name("Sites");
-    // gui.add(controls, "showLabels").name("Labels");
+    gui.add(controls, "showCircumcircle").name("Circumcircle");
+    gui.add(controls, "showBisectors").name("Bisectors");
+    gui.add(controls, "showSegments").name("Segments");
+    gui.add(controls, "showMidpoints").name("Midpoints");
+    gui.add(controls, "showIntersection").name("Circumcenter");
+    gui.add(controls, "showSites").name("Sites");
+    gui.add(controls, "showLabels").name("Labels");
 
     // gui.addColor(palette, "backgroundColor").name("Background");
 

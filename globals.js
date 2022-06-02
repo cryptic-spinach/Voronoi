@@ -13,10 +13,10 @@ let trueMouseY;
 
 let controls = {
     showCircumcircle: true,
-    showBisectors: false,
+    showBisectors: true,
     showSegments: true,
-    showMidpoints: false,
-    showIntersection: false,
+    showMidpoints: true,
+    showIntersection: true,
     showSites: true,
     showLabels: true
 };
