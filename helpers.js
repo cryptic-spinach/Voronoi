@@ -1,3 +1,26 @@
+function input_points_init() {
+    let vec = createVector(0, 300);
+    
+    vec.rotate(2 * PI / 3);
+    input_A = new PointObj(vec.x, vec.y, 'A');
+    inputPoints.push(input_A);
+  
+    vec.rotate(2 * PI / 3);
+    input_B = new PointObj(vec.x, vec.y, 'B');
+    inputPoints.push(input_B);
+  
+    vec.rotate(2 * PI / 3);
+    input_C = new PointObj(vec.x, vec.y, 'C');
+    inputPoints.push(input_C);
+  }
+  
+  function valid_triangles_init() {
+    AB = new SegmentObj(input_A, input_B);
+    BC = new SegmentObj(input_B, input_C);
+    ABC = new TriangleObj(AB, BC);
+    validTriangles.push(ABC);
+  }
+
 // Used to update anything that is instantiated with inputs A, B, or C
 function update_super_triangle() {
     AB = new SegmentObj(input_A, input_B);

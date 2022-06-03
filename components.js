@@ -248,5 +248,30 @@ class TriangleObj {
     
 }
 
+class PointCloud {
+    constructor(points) {
+        this.points = points;
+    }
 
+    getConvexHull() {
+        // return a subset of this.points
+    }
+}
+
+class Triangulation {
+    constructor(triangles) {
+        this.triangles = triangles;
+    }
+
+    getPointCloud() {
+        let ret = [];
+        this.triangles.forEach(t => {
+          ret.push(t.pair_1.site_1)
+          ret.push(t.pair_1.site_2)
+          ret.push(t.pair_2.site_2)
+        });
+        
+        return ret;
+    }
+}
   
