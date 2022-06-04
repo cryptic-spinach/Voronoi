@@ -14,13 +14,16 @@ function draw() {
   trueMouseX = (mouseX - windowWidth/2);
   trueMouseY = -(mouseY - windowHeight/2);
 
+  let pointCloud = new PointCloud(inputPoints)
+  pointCloud.getConvexHull();
+
   if (controls.showSites) {
     inputPoints.forEach(p => p.show())
   }
 
-  if(controls.showLabels) {
-    inputPoints.forEach(p => p.showLabel())
-  }
+  // if(controls.showLabels) {
+  //   inputPoints.forEach(p => p.showLabel())
+  // }
 
   
   
@@ -42,7 +45,5 @@ function construct_delaunay() {
     // let invalidTriangulation = new Triangulation(invalidTriangles)
     // let pointCloud = invalidTriangulation.getPointCloud();
   }
-  let pointCloud = new PointCloud(inputPoints)
-  let convexHul = pointCloud.getConvexHull();
 }
 

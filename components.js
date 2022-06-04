@@ -254,8 +254,50 @@ class PointCloud {
     }
 
     getConvexHull() {
-        // return a subset of this.points
+        if (this.points.length < 3) 
+        {
+            return;
+        }
+
+        let convexHull = [];
+
+        let points = this.points.sort((a, b) => a.x - b.x);
+        points = points.map(v => createVector(v.x, v.y));
+
+        let initialVertex = points[0];
+        let currentVertex = initialVertex;
+        let nextVertex = points[1];
+
+        for (let i = 0; i < 2; i++) {
+            points.forEach(candidateVertex =>
+                {
+                    let a = p5.Vector.sub(nextVertex, currentVertex);
+                    let b = p5.Vector.sub(candidateVertex, currentVertex);
+                    let cross = a.cross(b);
+                    if (cross.z < 0) {
+                        nextVertex = candidateVertex;
+                    }
+                });
+                this.drawEdge(currentVertex, nextVertex, "#ffffff");
+        
+                // points = points.filter(a => a != currentVertex)
+                convexHull.push(currentVertex)
+                currentVertex = nextVertex;
+        }
+
+        
+
+        noLoop();
     }
+
+    drawEdge(v1, v2, color) {
+        push();
+        stroke(color);
+        strokeWeight(2)
+        line(v1.x, v1.y, v2.x, v2.y);
+        pop();
+    }
+    
 }
 
 class Triangulation {
