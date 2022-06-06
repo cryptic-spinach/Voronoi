@@ -268,7 +268,7 @@ class PointCloud {
         let currentVertex = initialVertex;
         let nextVertex = points[1];
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.points.length; i++) {
             if (nextVertex == initialVertex) 
             {
                 break;

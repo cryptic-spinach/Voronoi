@@ -1,8 +1,8 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //controls_init();
-  // input_points_init();
-  // valid_triangles_init();
+  controls_init();
+  input_points_init();
+  valid_triangles_init();
   construct_delaunay();
 }
   
@@ -14,16 +14,22 @@ function draw() {
   trueMouseX = (mouseX - windowWidth/2);
   trueMouseY = -(mouseY - windowHeight/2);
 
-  let pointCloud = new PointCloud(inputPoints)
-  pointCloud.getConvexHull();
+  if (projectMode.circumcircleExplorer) draw_circumcircle_explorer();
 
-  if (controls.showSites) {
-    inputPoints.forEach(p => p.show())
+  if (projectMode.convexHull) 
+  {
+    let pointCloud = new PointCloud(inputPoints)
+    pointCloud.getConvexHull();
+  
+    if (controls.showSites) {
+      inputPoints.forEach(p => p.show())
+    }
+  
+    // if(controls.showLabels) {
+    //   inputPoints.forEach(p => p.showLabel())
+    // }
   }
 
-  // if(controls.showLabels) {
-  //   inputPoints.forEach(p => p.showLabel())
-  // }
 
   
   

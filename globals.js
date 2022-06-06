@@ -33,8 +33,13 @@ palette = {
 }
 
 let hiddenControls = {
-    showArrowTip: false
+    showArrowTip: false,
 };
+
+let projectMode = {
+    circumcircleExplorer: false,
+    convexHull: true,
+}
 
 let n = 10; // number of inputs
 let samplePoints = [];
