@@ -253,6 +253,7 @@ class TriangleObj {
 class PointCloud {
     constructor(points) {
         this.points = points;
+        this.convexHull = this.getConvexHull();
     }
 
     getConvexHull() {
@@ -271,6 +272,7 @@ class PointCloud {
         for (let i = 0; i < this.points.length; i++) {
             if (nextVertex == initialVertex) 
             {
+                convexHull.push(nextVertex);
                 break;
             }
             else 
@@ -281,14 +283,23 @@ class PointCloud {
                             nextVertex = candidateVertex;
                         }
                     });
-                    this.drawEdge(currentVertex, nextVertex, "#ffffff");
+                    // this.drawEdge(currentVertex, nextVertex, "#ffffff");
                     convexHull.push(currentVertex)
                     currentVertex = nextVertex;
             }
 
         }
+        return convexHull;
+        
+    }
 
-        noLoop();
+    drawConvexHull() {
+        beginShape();
+        noFill();
+        stroke("#ffffff");
+        strokeWeight(2);
+        this.convexHull.forEach(p => vertex(p.x, p.y))
+        endShape();
     }
 
     drawEdge(v1, v2, color) {

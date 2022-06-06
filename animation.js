@@ -20,6 +20,7 @@ function draw() {
   {
     let pointCloud = new PointCloud(inputPoints)
     pointCloud.getConvexHull();
+    pointCloud.drawConvexHull();
   
     if (controls.showSites) {
       inputPoints.forEach(p => p.show())
