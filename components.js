@@ -268,23 +268,25 @@ class PointCloud {
         let currentVertex = initialVertex;
         let nextVertex = points[1];
 
-        for (let i = 0; i < 2; i++) {
-            points.forEach(candidateVertex =>
+        for (let i = 0; i < 10; i++) {
+            if (nextVertex == initialVertex) 
             {
-                if (this.reassignNext(nextVertex, currentVertex, candidateVertex)) {
-                    nextVertex = candidateVertex;
-                }
-            });
-            console.log("Current Vertex: " + currentVertex.label);
-            console.log("Next Vertex: " + nextVertex.label);
-            this.drawEdge(currentVertex, nextVertex, "#ffffff");
-            convexHull.push(currentVertex)
-    
-            points = points.filter(p => p != currentVertex)
-            currentVertex = nextVertex;
-        }
+                break;
+            }
+            else 
+            {
+                points.forEach(candidateVertex =>
+                    {
+                        if (this.reassignNext(nextVertex, currentVertex, candidateVertex)) {
+                            nextVertex = candidateVertex;
+                        }
+                    });
+                    this.drawEdge(currentVertex, nextVertex, "#ffffff");
+                    convexHull.push(currentVertex)
+                    currentVertex = nextVertex;
+            }
 
-        
+        }
 
         noLoop();
     }

@@ -21,9 +21,9 @@ function draw() {
     inputPoints.forEach(p => p.show())
   }
 
-  if(controls.showLabels) {
-    inputPoints.forEach(p => p.showLabel())
-  }
+  // if(controls.showLabels) {
+  //   inputPoints.forEach(p => p.showLabel())
+  // }
 
   
   
