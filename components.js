@@ -29,6 +29,8 @@ class PointObj {
 
         pop();
     }
+
+
 }
 
 class SegmentObj {
@@ -260,9 +262,7 @@ class PointCloud {
         }
 
         let convexHull = [];
-
         let points = this.points.sort((a, b) => a.x - b.x);
-        points = points.map(v => createVector(v.x, v.y));
 
         let initialVertex = points[0];
         let currentVertex = initialVertex;
@@ -270,19 +270,18 @@ class PointCloud {
 
         for (let i = 0; i < 2; i++) {
             points.forEach(candidateVertex =>
-                {
-                    let a = p5.Vector.sub(nextVertex, currentVertex);
-                    let b = p5.Vector.sub(candidateVertex, currentVertex);
-                    let cross = a.cross(b);
-                    if (cross.z < 0) {
-                        nextVertex = candidateVertex;
-                    }
-                });
-                this.drawEdge(currentVertex, nextVertex, "#ffffff");
-        
-                // points = points.filter(a => a != currentVertex)
-                convexHull.push(currentVertex)
-                currentVertex = nextVertex;
+            {
+                if (this.reassignNext(nextVertex, currentVertex, candidateVertex)) {
+                    nextVertex = candidateVertex;
+                }
+            });
+            console.log("Current Vertex: " + currentVertex.label);
+            console.log("Next Vertex: " + nextVertex.label);
+            this.drawEdge(currentVertex, nextVertex, "#ffffff");
+            convexHull.push(currentVertex)
+    
+            points = points.filter(p => p != currentVertex)
+            currentVertex = nextVertex;
         }
 
         
@@ -296,6 +295,17 @@ class PointCloud {
         strokeWeight(2)
         line(v1.x, v1.y, v2.x, v2.y);
         pop();
+    }
+
+    reassignNext(next, current, candidate) {
+        let nextVertexVec = createVector(next.x, next.y)
+        let currentVertexVec = createVector(current.x, current.y)
+        let candidateVertexVec = createVector(candidate.x, candidate.y)
+
+        let a = p5.Vector.sub(nextVertexVec, currentVertexVec);
+        let b = p5.Vector.sub(candidateVertexVec, currentVertexVec);
+        let cross = a.cross(b);
+        return cross.z < 0 || current == next
     }
     
 }
