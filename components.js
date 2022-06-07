@@ -253,7 +253,14 @@ class TriangleObj {
 class PointCloud {
     constructor(points) {
         this.points = points;
-        this.convexHull = this.getConvexHull();
+    }
+
+    getInitialVertex() {
+        let leftMost = this.points[0];
+        this.points.forEach(p => {
+            if (p.x < leftMost.x) leftMost = p
+        });
+        return leftMost;
     }
 
     getConvexHull() {
@@ -263,11 +270,10 @@ class PointCloud {
         }
 
         let convexHull = [];
-        let points = this.points.sort((a, b) => a.x - b.x);
 
-        let initialVertex = points[0];
+        let initialVertex = this.getInitialVertex();
         let currentVertex = initialVertex;
-        let nextVertex = points[1];
+        let nextVertex = this.points.filter(p => p != initialVertex)[0];
 
         for (let i = 0; i < this.points.length; i++) {
             if (nextVertex == initialVertex) 
@@ -277,7 +283,7 @@ class PointCloud {
             }
             else 
             {
-                points.forEach(candidateVertex =>
+                this.points.forEach(candidateVertex =>
                     {
                         if (this.reassignNext(nextVertex, currentVertex, candidateVertex)) {
                             nextVertex = candidateVertex;
@@ -298,7 +304,8 @@ class PointCloud {
         noFill();
         stroke("#ffffff");
         strokeWeight(2);
-        this.convexHull.forEach(p => vertex(p.x, p.y))
+        let convexHull = this.getConvexHull()
+        convexHull.forEach(p => vertex(p.x, p.y))
         endShape();
     }
 

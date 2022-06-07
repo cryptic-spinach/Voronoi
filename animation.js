@@ -18,8 +18,11 @@ function draw() {
 
   if (projectMode.convexHull) 
   {
+
+
+    inputPoints[0] = new PointObj(trueMouseX, trueMouseY, "A");
     let pointCloud = new PointCloud(inputPoints)
-    pointCloud.getConvexHull();
+
     pointCloud.drawConvexHull();
   
     if (controls.showSites) {
