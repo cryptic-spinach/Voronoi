@@ -1,5 +1,5 @@
 function controls_init() {
-    if (projectMode.circumcircleExplorer) 
+    if (projectMode.circumcircleExplorer && controls.showControls) 
     {
         gui = new dat.GUI();
         gui.width = 300;

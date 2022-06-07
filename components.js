@@ -188,6 +188,7 @@ class TriangleObj {
         fill(myColor);
         translate(base.x, base.y);
         rotate(PI);
+        let edgeLength = 100000;
         vec.setMag(edgeLength);
 
         let needsFlip = this.getNeedsFlip();
@@ -241,7 +242,8 @@ class TriangleObj {
     getCircumcirleRadius() {
         let x = this.pair_1.site_1.x;
         let y = this.pair_1.site_1.y;
-        return Math.sqrt(Math.pow(this.circumcenter.x - x, 2) + Math.pow(this.circumcenter.y - y, 2));
+        // Null reference bug discovered while stress testing
+        return Math.sqrt(Math.pow(this.circumcenter.x - x, 2) + Math.pow(this.circumcenter.y - y, 2)); 
     }
 
     pointIsInCircumcircle(testPoint) {
