@@ -22,6 +22,17 @@ function controls_init() {
         // gui.addColor(palette, "siteColor").name("Site");
         // gui.addColor(palette, "labelColor").name("Label");
     }
+
+    if (projectMode.convexHull) 
+    {
+        // gui = new dat.GUI();
+        // gui.width = 300;
+
+        // gui.add(controls, "showSites").name("Sites");
+        // gui.addColor(palette, "backgroundColor").name("Background");
+        // gui.addColor(palette, "siteColor").name("Site");
+        // gui.addColor(palette, "siteFillColor").name("Site Fill");
+    }
 }
 
 

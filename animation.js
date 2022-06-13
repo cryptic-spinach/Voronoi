@@ -21,7 +21,7 @@ function draw() {
 
 
     inputPoints[0] = new PointObj(trueMouseX, trueMouseY, "A");
-    let pointCloud = new PointCloud(inputPoints)
+    let pointCloud = new PointCloud(inputPoints);
 
     pointCloud.drawConvexHull();
   

@@ -74,8 +74,8 @@ function draw_circumcircle_explorer() {
 function construct_delaunay() {
   for (let i = 0; i < n; i++) {
     let invalidTriangles = [];
-    let bufferX = 200;
-    let bufferY = 100;
+    let bufferX = 400;
+    let bufferY = 200;
     let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
     inputPoints.push(newPoint);
     // validTriangles.forEach(t => {

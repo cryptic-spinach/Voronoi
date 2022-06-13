@@ -2,16 +2,16 @@ class PointObj {
     constructor (x, y, label = "") {
         this.x = x;
         this.y = y;
-        this.r = 15;
+        this.r = 25;
         this.label = label
         this.selected = false;
     }
 
     show() {
         push();
-        fill(0);
+        fill(palette.siteFillColor);
         stroke(palette.siteColor);
-        strokeWeight(2);
+        strokeWeight(3);
         ellipse(this.x, this.y, this.r, this.r);
         pop();
     }
