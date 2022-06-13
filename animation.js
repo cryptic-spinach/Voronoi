@@ -3,7 +3,6 @@ function setup() {
   controls_init();
   input_points_init();
   valid_triangles_init();
-  construct_delaunay();
 }
   
 function draw() {
@@ -20,9 +19,10 @@ function draw() {
 
   if (projectMode.delaunayTriangulation) 
   {
+    construct_delaunay();
     update_super_triangle(); 
 
-    if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
+    if (controls.showCircumcircle) ABC.drawCircumcircle();
   
     if (controls.showSegments) {
       AB.drawSlopeVec();

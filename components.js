@@ -345,7 +345,7 @@ class Triangulation {
           ret.push(t.pair_2.site_2)
         });
         
-        return ret;
+        return new PointCloud(ret);
     }
 }
   

@@ -12,6 +12,13 @@ function input_points_init() {
     vec.rotate(2 * PI / 3);
     input_C = new PointObj(vec.x, vec.y, 'C');
     inputPoints.push(input_C);
+
+    for (let i = 0; i < n; i++) {
+      let bufferX = 400;
+      let bufferY = 200;
+      let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
+      inputPoints.push(newPoint);
+    }
   }
   
   function valid_triangles_init() {
@@ -87,18 +94,22 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
-  for (let i = 0; i < n; i++) {
-    let invalidTriangles = [];
-    let bufferX = 400;
-    let bufferY = 200;
-    let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
-    inputPoints.push(newPoint);
-    // validTriangles.forEach(t => {
-    //   if (t.pointIsInCircumcircle(newPoint)) {
-    //     invalidTriangles.push(t)
-    //   }
-    // });
-    // let invalidTriangulation = new Triangulation(invalidTriangles)
-    // let pointCloud = invalidTriangulation.getPointCloud();
+  let invalidTriangles = [];
+  for (let i = 0; i < n + 3; i++) {
+    let newPoint = inputPoints[i]
+    validTriangles.forEach(t => {
+      if (t.pointIsInCircumcircle(newPoint)) {
+        invalidTriangles.push(t)
+        console.log(i)
+      }
+    });
   }
+
+    let invalidTriangulation = new Triangulation(invalidTriangles)
+    let pointCloud = invalidTriangulation.getPointCloud();
+    let hull = pointCloud.getConvexHull();
+    console.log(pointCloud);
+    console.log(hull);
+    noLoop();
+
 }
