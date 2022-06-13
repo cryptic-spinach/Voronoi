@@ -1,5 +1,5 @@
 function input_points_init() {
-    let vec = createVector(0, 300);
+    let vec = createVector(0, 1100);
     
     vec.rotate(2 * PI / 3);
     input_A = new PointObj(vec.x, vec.y, 'A');
@@ -69,6 +69,21 @@ function draw_circumcircle_explorer() {
       input_C.showLabel();
     }
   
+}
+
+function convex_hull_explorer() {
+  inputPoints[0] = new PointObj(trueMouseX, trueMouseY, "A");
+  let pointCloud = new PointCloud(inputPoints);
+
+  pointCloud.drawConvexHull();
+
+  if (controls.showSites) {
+    inputPoints.forEach(p => p.show())
+  }
+
+  if(controls.showLabels) {
+    inputPoints.forEach(p => p.showLabel())
+  }
 }
 
 function construct_delaunay() {

@@ -33,6 +33,19 @@ function controls_init() {
         // gui.addColor(palette, "siteColor").name("Site");
         // gui.addColor(palette, "siteFillColor").name("Site Fill");
     }
+
+
+    if (projectMode.delaunayTriangulation && controls.showControls) 
+    {
+        gui = new dat.GUI();
+        gui.width = 300;
+    
+        gui.add(controls, "showCircumcircle").name("Circumcircle");
+        gui.add(controls, "showSites").name("Sites");
+        gui.add(controls, "showLabels").name("Labels");
+
+    
+    }
 }
 
 
@@ -50,6 +63,11 @@ function mousePressed() {
     {
 
     }
+
+    if (projectMode.delaunayTriangulation) 
+    {
+
+    }
 }
 
 function mouseDragged() {
@@ -59,6 +77,11 @@ function mouseDragged() {
     }
 
     if (projectMode.convexHull) 
+    {
+
+    }
+
+    if (projectMode.delaunayTriangulation) 
     {
 
     }

@@ -2,7 +2,7 @@ class PointObj {
     constructor (x, y, label = "") {
         this.x = x;
         this.y = y;
-        this.r = 25;
+        this.r = 15;
         this.label = label
         this.selected = false;
     }

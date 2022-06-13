@@ -15,23 +15,28 @@ function draw() {
   trueMouseY = -(mouseY - windowHeight/2);
 
   if (projectMode.circumcircleExplorer) draw_circumcircle_explorer();
+  if (projectMode.convexHull) convex_hull_explorer();
 
-  if (projectMode.convexHull) 
+
+  if (projectMode.delaunayTriangulation) 
   {
+    update_super_triangle(); 
 
-
-    inputPoints[0] = new PointObj(trueMouseX, trueMouseY, "A");
-    let pointCloud = new PointCloud(inputPoints);
-
-    pointCloud.drawConvexHull();
+    if (controls.showCircumcircle) ABC.drawCircumcircle(); // This method can be called on ony permutation of ABC
   
+    if (controls.showSegments) {
+      AB.drawSlopeVec();
+      BC.drawSlopeVec();
+      CA.drawSlopeVec();  
+    }
+
     if (controls.showSites) {
       inputPoints.forEach(p => p.show())
     }
   
-    // if(controls.showLabels) {
-    //   inputPoints.forEach(p => p.showLabel())
-    // }
+    if(controls.showLabels) {
+      inputPoints.forEach(p => p.showLabel())
+    }
   }
 
 }
