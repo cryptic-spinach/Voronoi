@@ -1,5 +1,5 @@
 function input_points_init() {
-    let vec = createVector(0, 1100);
+    let vec = createVector(0, r);
     
     vec.rotate(2 * PI / 3);
     input_A = new PointObj(vec.x, vec.y, 'A');
@@ -94,22 +94,35 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
-  let invalidTriangles = [];
   for (let i = 0; i < n + 3; i++) {
+    let invalidTriangles = [];
+    let newTriangles = [];
     let newPoint = inputPoints[i]
+    console.log(i)
     validTriangles.forEach(t => {
       if (t.pointIsInCircumcircle(newPoint)) {
         invalidTriangles.push(t)
-        console.log(i)
+        
       }
     });
-  }
-
     let invalidTriangulation = new Triangulation(invalidTriangles)
     let pointCloud = invalidTriangulation.getPointCloud();
-    let hull = pointCloud.getConvexHull();
-    console.log(pointCloud);
-    console.log(hull);
-    noLoop();
+    
+    // if(pointCloud.length > 0) {
+    //   let hull = pointCloud.getConvexHull();
+
+    //   for (let j = 0; j < hull.length; j++) {
+    //     let seg_1 = new SegmentObj(hull.edges[j].site_1, hull.ed);
+    //     let seg_2 = new SegmentObj(hull.points[j]);
+    //     newTriangles.push(new TriangleObj(seg_1, seg_2));
+    //   }
+    // }
+
+    // console.log(newTriangles)
+
+  }
+    
+
+  noLoop();
 
 }

@@ -277,7 +277,7 @@ class PointCloud {
         let currentVertex = initialVertex;
         let nextVertex = this.points.filter(p => p != initialVertex)[0];
 
-        for (let i = 0; i < this.points.length; i++) {
+        for (let i = 0; i < this.points.length + 1; i++) {
             if (nextVertex == initialVertex) 
             {
                 convexHull.push(nextVertex);
@@ -318,6 +318,7 @@ class PointCloud {
         line(v1.x, v1.y, v2.x, v2.y);
         pop();
     }
+
 
     reassignNext(next, current, candidate) {
         let nextVertexVec = createVector(next.x, next.y)

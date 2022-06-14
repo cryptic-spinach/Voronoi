@@ -9,7 +9,6 @@ let BCA;
 let CAB;
 let trueMouseX;
 let trueMouseY;
-let n = 1;
 let samplePoints = [];
 let inputPoints = [];
 let validTriangles = [];

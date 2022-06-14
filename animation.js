@@ -20,15 +20,10 @@ function draw() {
   if (projectMode.delaunayTriangulation) 
   {
     construct_delaunay();
-    update_super_triangle(); 
+
 
     if (controls.showCircumcircle) ABC.drawCircumcircle();
   
-    if (controls.showSegments) {
-      AB.drawSlopeVec();
-      BC.drawSlopeVec();
-      CA.drawSlopeVec();  
-    }
 
     if (controls.showSites) {
       inputPoints.forEach(p => p.show())

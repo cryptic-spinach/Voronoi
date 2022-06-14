@@ -17,6 +17,9 @@ let hiddenControls = {
 
 let projectMode = {
     circumcircleExplorer: false,
-    convexHull: false,
-    delaunayTriangulation: true,
+    convexHull: true,
+    delaunayTriangulation: false,
 };
+
+let n = 1;
+let r = 300;
