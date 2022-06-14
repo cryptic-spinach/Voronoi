@@ -98,7 +98,6 @@ function construct_delaunay() {
     let invalidTriangles = [];
     let newTriangles = [];
     let newPoint = inputPoints[i]
-    console.log(i)
     validTriangles.forEach(t => {
       if (t.pointIsInCircumcircle(newPoint)) {
         invalidTriangles.push(t)
@@ -108,17 +107,15 @@ function construct_delaunay() {
     let invalidTriangulation = new Triangulation(invalidTriangles)
     let pointCloud = invalidTriangulation.getPointCloud();
     
-    // if(pointCloud.length > 0) {
-    //   let hull = pointCloud.getConvexHull();
 
-    //   for (let j = 0; j < hull.length; j++) {
-    //     let seg_1 = new SegmentObj(hull.edges[j].site_1, hull.ed);
-    //     let seg_2 = new SegmentObj(hull.points[j]);
-    //     newTriangles.push(new TriangleObj(seg_1, seg_2));
-    //   }
+    // let hull = pointCloud.getConvexHull();
+
+    // for (let j = 0; j < hull.length; j++) {
+    //   let seg_1 = new SegmentObj();
+    //   let seg_2 = new SegmentObj();
+    //   newTriangles.push(new TriangleObj(seg_1, seg_2));
     // }
 
-    // console.log(newTriangles)
 
   }
     

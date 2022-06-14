@@ -271,7 +271,8 @@ class PointCloud {
             return;
         }
 
-        let convexHull = [];
+        let convexHullPoints = [];
+        let convexHullEdges = [];
 
         let initialVertex = this.getInitialVertex();
         let currentVertex = initialVertex;
@@ -280,7 +281,7 @@ class PointCloud {
         for (let i = 0; i < this.points.length + 1; i++) {
             if (nextVertex == initialVertex) 
             {
-                convexHull.push(nextVertex);
+                convexHullPoints.push(nextVertex);
                 break;
             }
             else 
@@ -291,13 +292,13 @@ class PointCloud {
                             nextVertex = candidateVertex;
                         }
                     });
-                    // this.drawEdge(currentVertex, nextVertex, "#ffffff");
-                    convexHull.push(currentVertex)
+                    convexHullPoints.push(currentVertex)
+                    convexHullEdges.push(new SegmentObj(currentVertex, nextVertex))
                     currentVertex = nextVertex;
             }
 
         }
-        return convexHull;
+        return {"points": convexHullPoints, "edges": convexHullEdges};
         
     }
 
@@ -307,7 +308,7 @@ class PointCloud {
         stroke("#ffffff");
         strokeWeight(2);
         let convexHull = this.getConvexHull()
-        convexHull.forEach(p => vertex(p.x, p.y))
+        convexHull.points.forEach(p => vertex(p.x, p.y))
         endShape();
     }
 
