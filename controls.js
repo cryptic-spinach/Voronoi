@@ -66,7 +66,7 @@ function mousePressed() {
 
     if (projectMode.delaunayTriangulation) 
     {
-
+        //loop()
     }
 }
 

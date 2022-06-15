@@ -1,5 +1,6 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  user_input_init();
   controls_init();
   input_points_init();
   valid_triangles_init();
@@ -33,9 +34,7 @@ function draw() {
       inputPoints.forEach(p => p.showLabel())
     }
 
-    
 
-    noLoop();
   }
 
 }
