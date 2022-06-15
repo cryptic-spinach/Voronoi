@@ -104,6 +104,8 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
+  // console.log("Valid Triangles Start");
+  // console.log(validTriangles.length);
   // Add points one at a time
   let add = [];
   let del = [];
@@ -126,15 +128,37 @@ function construct_delaunay() {
     let newTriangles = construct_replacement_triangles(hull, newPoint);
 
     newTriangles.forEach(t => {
-      add.push(t)
-    })
+      add.push(t);
+    });
+
+    invalidTriangles.forEach(t => {
+      del.push(t);
+    });
   }
+
+
+  // console.log("Valid Triangles Before Delete");
+  // console.log(validTriangles.length);
   
+
+  validTriangles = validTriangles.filter(t => !del.includes(t));
+
+  // console.log("Valid Triangles After Delete");
+  // console.log(validTriangles.length);
+
+  // console.log("Valid Triangles Before Add");
+  // console.log(validTriangles.length);
+
   add.forEach(t => {
-    t.show()
+    validTriangles.push(t)
   })
 
-  noLoop();
+  // console.log("Valid Triangles After Add");
+  // console.log(validTriangles.length);
+
+  validTriangles.forEach(t => {
+    t.show();
+  })
 
 }
 
@@ -148,9 +172,6 @@ function construct_replacement_triangles(hull, newPoint) {
       newTriangles.push(new TriangleObj(seg_1, seg_2));
     }
 
-    newTriangles.forEach(t => {
-      validTriangles.push(t)
-    })
     return newTriangles;
   }
   else {
