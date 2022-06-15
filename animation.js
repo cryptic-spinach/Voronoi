@@ -32,6 +32,10 @@ function draw() {
     if(controls.showLabels) {
       inputPoints.forEach(p => p.showLabel())
     }
+
+    
+
+    noLoop();
   }
 
 }

@@ -132,6 +132,12 @@ class TriangleObj {
         this.circumcircleRadius = this.getCircumcirleRadius()
     }
 
+    show() {
+        this.pair_1.drawSlopeVec();
+        this.pair_2.drawSlopeVec();
+        this.pair_3.drawSlopeVec();
+    }
+
     getIntersection() {
         let A = math.matrix([[this.pair_1.coeffiecients.A, this.pair_1.coeffiecients.B], [this.pair_2.coeffiecients.A, this.pair_2.coeffiecients.B]]);
         

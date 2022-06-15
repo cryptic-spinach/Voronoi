@@ -13,10 +13,20 @@ function input_points_init() {
     input_C = new PointObj(vec.x, vec.y, 'C');
     inputPoints.push(input_C);
 
-    for (let i = 0; i < n; i++) {
-      let bufferX = 400;
-      let bufferY = 200;
-      let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
+    generate_inputs(false);
+  }
+
+  function generate_inputs(useRandom) {
+    if (useRandom) {
+      for (let i = 0; i < n; i++) {
+        let bufferX = 400;
+        let bufferY = 200;
+        let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
+        inputPoints.push(newPoint);
+      }
+    }
+    else {
+      let newPoint = new PointObj(random(0), random(0), "0");
       inputPoints.push(newPoint);
     }
   }
@@ -94,32 +104,56 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
-  for (let i = 0; i < n + 3; i++) {
+  // Add points one at a time
+  let add = [];
+  let del = [];
+  for (let i = 3; i < n + 3; i++) {
     let invalidTriangles = [];
-    let newTriangles = [];
     let newPoint = inputPoints[i]
+
+    // Collect the triangles whose circumcircles contain the point being added
     validTriangles.forEach(t => {
       if (t.pointIsInCircumcircle(newPoint)) {
         invalidTriangles.push(t)
         
       }
     });
+
+    // Get the replacement triangles
     let invalidTriangulation = new Triangulation(invalidTriangles)
     let pointCloud = invalidTriangulation.getPointCloud();
-    
+    let hull = pointCloud.getConvexHull();
+    let newTriangles = construct_replacement_triangles(hull, newPoint);
 
-    // let hull = pointCloud.getConvexHull();
-
-    // for (let j = 0; j < hull.length; j++) {
-    //   let seg_1 = new SegmentObj();
-    //   let seg_2 = new SegmentObj();
-    //   newTriangles.push(new TriangleObj(seg_1, seg_2));
-    // }
-
-
+    newTriangles.forEach(t => {
+      add.push(t)
+    })
   }
-    
+  
+  add.forEach(t => {
+    t.show()
+  })
 
   noLoop();
 
+}
+
+function construct_replacement_triangles(hull, newPoint) {
+  if (hull != null) 
+  {
+    let newTriangles = [];
+    for (let j = 0; j < hull.edges.length; j++) {
+      let seg_1 = new SegmentObj(hull.edges[j].site_1, newPoint);
+      let seg_2 = new SegmentObj(newPoint, hull.edges[j].site_2);
+      newTriangles.push(new TriangleObj(seg_1, seg_2));
+    }
+
+    newTriangles.forEach(t => {
+      validTriangles.push(t)
+    })
+    return newTriangles;
+  }
+  else {
+    return []
+  }
 }
