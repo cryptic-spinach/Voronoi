@@ -1,8 +1,8 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  user_input_init();
+  createCanvas(windowWidth, windowHeight);;
   controls_init();
   input_points_init();
+  user_input_init();
   valid_triangles_init();
 }
   
@@ -20,10 +20,16 @@ function draw() {
 
   if (projectMode.delaunayTriangulation) 
   {
+    background(0);
     construct_delaunay();
 
+    if (controls.showSegments) {
+      validTriangles.forEach(t => t.show())
+    }
 
-    if (controls.showCircumcircle) ABC.drawCircumcircle();
+    if (controls.showCircumcircle) {
+      validTriangles.forEach(t => t.drawCircumcircle())
+    };
   
 
     if (controls.showSites) {
@@ -33,6 +39,8 @@ function draw() {
     if(controls.showLabels) {
       inputPoints.forEach(p => p.showLabel())
     }
+
+    noLoop();
 
 
   }

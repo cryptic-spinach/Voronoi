@@ -13,6 +13,7 @@ let palette = { backgroundColor: "#202020", circumcircleColor: "#ffffff", bisect
 
 let hiddenControls = {
     showArrowTip: false,
+    generateRadially: false
 };
 
 let projectMode = {
@@ -22,4 +23,4 @@ let projectMode = {
 };
 
 let n = 1;
-let r = 300;
+let r = 500;

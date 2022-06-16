@@ -1,7 +1,7 @@
 function user_input_init() {
   if(projectMode.delaunayTriangulation) 
   {
-    inputPoints[0] = new PointObj(0, 0, 'init');
+    //inputPoints[0] = new PointObj(0, 0, 'init');
   }
 }
 
@@ -33,30 +33,32 @@ function input_points_init() {
 
     if(projectMode.delaunayTriangulation) 
     {
-
+      inputPoints.push(input_A);
+      inputPoints.push(input_B);
+      inputPoints.push(input_C); 
     }
 
-    generate_inputs(true);
+    generate_inputs(hiddenControls.generateRadially);
   }
 
-  function generate_inputs(useRandom) {
-    if (useRandom) {
-      // for (let i = 0; i < n; i++) {
-      //   let bufferX = 400;
-      //   let bufferY = 200;
-      //   let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
-      //   inputPoints.push(newPoint);
-      // }
+  function generate_inputs(radial) {
+    if (radial) 
+    {
       for (let i = 0; i < n; i++) {
         let vec = createVector(random(-1, 1), random(-1, 1));
         vec.setMag(random(r - 20));
         let newPoint = new PointObj(vec.x, vec.y, i.toString());
         inputPoints.push(newPoint);
       }
-    }
-    else {
-      // let newPoint = new PointObj(random(0), random(0), "0");
-      // inputPoints.push(newPoint);
+    } 
+    else 
+    {
+      for (let i = 0; i < n; i++) {
+        let bufferX = 400;
+        let bufferY = 200;
+        let newPoint = new PointObj(random(-windowWidth/2 + bufferX, windowWidth/2 - bufferX), random(-windowHeight/2 + bufferY, windowHeight/2 - bufferY), i.toString());
+        inputPoints.push(newPoint);
+      }
     }
   }
   
@@ -134,7 +136,7 @@ function convex_hull_explorer() {
 
 function construct_delaunay() {
 
-  for (let i = 0; i < n + 1; i++) {
+  for (let i = 0; i < inputPoints.length; i++) {
     let invalidTriangles = [];
     let newPoint = inputPoints[i];
 
@@ -157,12 +159,6 @@ function construct_delaunay() {
     })
 
   }
-
-  // Show
-  validTriangles.forEach(t => {
-    t.show();
-  })
-
   
 }
 

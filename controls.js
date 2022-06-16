@@ -37,13 +37,12 @@ function controls_init() {
 
     if (projectMode.delaunayTriangulation && controls.showControls) 
     {
-        // gui = new dat.GUI();
-        // gui.width = 300;
+        gui = new dat.GUI();
+        gui.width = 300;
     
-        // gui.add(controls, "showCircumcircle").name("Circumcircle");
-        // gui.add(controls, "showSites").name("Sites");
-        // gui.add(controls, "showLabels").name("Labels");
-
+        gui.add(controls, "showCircumcircle").name("Circumcircles");
+        gui.add(controls, "showSegments").name("Edges");
+        gui.add(controls, "showLabels").name("Labels");
     
     }
 }
@@ -66,7 +65,7 @@ function mousePressed() {
 
     if (projectMode.delaunayTriangulation) 
     {
-        //loop()
+        
     }
 }
 
@@ -129,3 +128,9 @@ function circumcircleExplorerMouseReleased() {
     input_B.selected = false;
     input_C.selected = false;
 }
+
+function keyPressed() {
+    if (keyCode === 32) {
+      loop();
+    }
+  }

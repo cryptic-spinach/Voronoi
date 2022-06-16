@@ -128,6 +128,7 @@ class TriangleObj {
         this.pair_1 = pair_1;
         this.pair_2 = pair_2;
         this.pair_3 = new SegmentObj(pair_1.site_1, pair_2.site_2);
+        this.label = this.getLabel();
         this.circumcenter = this.getIntersection();
         this.circumcircleRadius = this.getCircumcirleRadius()
     }
@@ -136,6 +137,10 @@ class TriangleObj {
         this.pair_1.drawSlopeVec();
         this.pair_2.drawSlopeVec();
         this.pair_3.drawSlopeVec();
+    }
+
+    getLabel() {
+        return this.pair_1.site_1.label + "-" + this.pair_1.site_2.label + "-" + this.pair_2.site_2.label;
     }
 
     getIntersection() {
