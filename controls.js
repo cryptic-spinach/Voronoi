@@ -37,12 +37,12 @@ function controls_init() {
 
     if (projectMode.delaunayTriangulation && controls.showControls) 
     {
-        gui = new dat.GUI();
-        gui.width = 300;
+        // gui = new dat.GUI();
+        // gui.width = 300;
     
-        gui.add(controls, "showCircumcircle").name("Circumcircles");
-        gui.add(controls, "showSegments").name("Edges");
-        gui.add(controls, "showLabels").name("Labels");
+        // gui.add(controls, "showCircumcircle").name("Circumcircles");
+        // gui.add(controls, "showSegments").name("Edges");
+        // gui.add(controls, "showLabels").name("Labels");
     
     }
 }

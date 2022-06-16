@@ -135,8 +135,7 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
-
-  for (let i = 0; i < inputPoints.length; i++) {
+  for (let i = 3; i < inputPoints.length; i++) {
     let invalidTriangles = [];
     let newPoint = inputPoints[i];
 
@@ -157,7 +156,6 @@ function construct_delaunay() {
     newTriangles.forEach(t => {
       validTriangles.push(t)
     })
-
   }
   
 }

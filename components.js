@@ -140,7 +140,11 @@ class TriangleObj {
     }
 
     getLabel() {
-        return this.pair_1.site_1.label + "-" + this.pair_1.site_2.label + "-" + this.pair_2.site_2.label;
+        return [this.pair_1.site_1.label, this.pair_1.site_2.label, this.pair_2.site_2.label];
+    }
+
+    getLabelArray() {
+        return [this.pair_1.site_1.label, this.pair_1.site_2.label, this.pair_2.site_2.label];
     }
 
     getIntersection() {
@@ -258,7 +262,8 @@ class TriangleObj {
     }
 
     pointIsInCircumcircle(testPoint) {
-        return dist(testPoint.x, testPoint.y, this.circumcenter.x, this.circumcenter.y) < this.circumcircleRadius
+        let labelArray = this.getLabelArray();
+        return !labelArray.includes(testPoint.label) && dist(testPoint.x, testPoint.y, this.circumcenter.x, this.circumcenter.y) < this.circumcircleRadius
     }
     
 }
