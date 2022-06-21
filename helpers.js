@@ -1,10 +1,3 @@
-function user_input_init() {
-  if(projectMode.delaunayTriangulation) 
-  {
-    //inputPoints[0] = new PointObj(0, 0, 'init');
-  }
-}
-
 function input_points_init() {
     let vec = createVector(0, r);
     
@@ -17,26 +10,9 @@ function input_points_init() {
     vec.rotate(2 * PI / 3);
     input_C = new PointObj(vec.x, vec.y, 'C');   
 
-    if(projectMode.circumcircleExplorer) 
-    {
-      inputPoints.push(input_A);
-      inputPoints.push(input_B);
-      inputPoints.push(input_C); 
-    }
-
-    if(projectMode.convexHull) 
-    {
-      inputPoints.push(input_A);
-      inputPoints.push(input_B);
-      inputPoints.push(input_C); 
-    }
-
-    if(projectMode.delaunayTriangulation) 
-    {
-      inputPoints.push(input_A);
-      inputPoints.push(input_B);
-      inputPoints.push(input_C); 
-    }
+    inputPoints.push(input_A);
+    inputPoints.push(input_B);
+    inputPoints.push(input_C); 
 
     generate_inputs(hiddenControls.generateRadially);
   }
@@ -135,29 +111,48 @@ function convex_hull_explorer() {
 }
 
 function construct_delaunay() {
+  let inputPointCloud = new PointCloud(inputPoints);
+  let inputPointHull = inputPointCloud.getConvexHull();
+  let inputPointHullLabels = inputPointHull.edges.map(p => p.site_1.label)
+
   for (let i = 0; i < inputPoints.length; i++) {
     let invalidTriangles = [];
     let newPoint = inputPoints[i];
 
-    // Get deletes
-    validTriangles.forEach(t => {
-      if (t.pointIsInCircumcircle(newPoint)) {
-        invalidTriangles.push(t); 
-      }
-    });
-    
-    // Get adds
-    let newTriangles = invalid_to_valid(invalidTriangles, newPoint);
+    if (!inputPointHullLabels.includes(newPoint.label)) 
+    {
+      // Get deletes
+      validTriangles.forEach(t => {
+        if (t.pointIsInCircumcircle(newPoint)) {
+          invalidTriangles.push(t); 
+        }
+      });
+      
+      // Get adds
+      let newTriangles = invalid_to_valid(invalidTriangles, newPoint);
 
-    // Delete
-    validTriangles = validTriangles.filter(t => !invalidTriangles.includes(t));
-    
-    // Add
-    newTriangles.forEach(t => {
-      validTriangles.push(t)
-    })
+      // Delete
+      validTriangles = validTriangles.filter(t => !invalidTriangles.includes(t));
+      
+      // Add
+      newTriangles.forEach(t => {
+        validTriangles.push(t)
+      })
+    }
+    else 
+    {
+      // console.log(newPoint.label + " is on the hull")
+      get_outer_triangle(newPoint, inputPointHull, inputPointHullLabels);
+    }
   }
   
+}
+
+function get_outer_triangle(newPoint, inputPointHull, inputPointHullLabels) {
+  let outerTriangleIndex = inputPointHullLabels.indexOf(newPoint.label)
+  // let seg_1 = new SegmentObj(inputPointHull)
+  // console.log(outerTriangleIndex);
+  // console.log(inputPointHullLabels);
 }
 
 function invalid_to_valid(invalidTriangles, newPoint) {

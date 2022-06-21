@@ -1,6 +1,6 @@
 let controls = {
     showControls: true,
-    showCircumcircle: true,
+    showCircumcircle: false,
     showBisectors: true,
     showSegments: true,
     showMidpoints: true,
@@ -13,7 +13,7 @@ let palette = { backgroundColor: "#202020", circumcircleColor: "#ffffff", bisect
 
 let hiddenControls = {
     showArrowTip: false,
-    generateRadially: true
+    generateRadially: false
 };
 
 let projectMode = {

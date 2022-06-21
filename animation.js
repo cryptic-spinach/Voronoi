@@ -2,7 +2,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);;
   controls_init();
   input_points_init();
-  user_input_init();
   valid_triangles_init();
 }
   
@@ -23,6 +22,7 @@ function draw() {
     background(0);
     construct_delaunay();
 
+
     if (controls.showSegments) {
       validTriangles.forEach(t => t.show())
     }
@@ -40,7 +40,8 @@ function draw() {
       inputPoints.forEach(p => p.showLabel())
     }
 
-    noLoop();
+    // console.log(validTriangles)
+    // noLoop();
   }
 
 }

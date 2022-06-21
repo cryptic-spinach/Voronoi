@@ -140,7 +140,7 @@ class TriangleObj {
     }
 
     getLabel() {
-        return [this.pair_1.site_1.label, this.pair_1.site_2.label, this.pair_2.site_2.label];
+        return this.pair_1.site_1.label + '-' + this.pair_1.site_2.label + '-' + this.pair_2.site_2.label;
     }
 
     getLabelArray() {
