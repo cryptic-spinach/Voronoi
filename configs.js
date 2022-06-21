@@ -2,7 +2,7 @@ let controls = {
     showControls: true,
     showCircumcircle: true,
     showBisectors: true,
-    showSegments: false,
+    showSegments: true,
     showMidpoints: true,
     showIntersection: true,
     showSites: true,
